@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Poetic Government Spending Visualization Design System
+River of Light - Civic Blues, Teals, and Gold
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Deep cosmic background */
+    --background: 220 26% 6%;
+    --foreground: 210 40% 98%;
+
+    /* Glass surfaces */
+    --card: 220 26% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 26% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Civic Primary - Deep governance blue */
+    --primary: 214 84% 56%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Flowing teal streams */
+    --secondary: 188 78% 41%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted river banks */
+    --muted: 220 26% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Golden highlights - prosperity flow */
+    --accent: 43 89% 58%;
+    --accent-foreground: 220 26% 6%;
+
+    /* Alert flows */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Subtle boundaries */
+    --border: 220 26% 18%;
+    --input: 220 26% 18%;
+    --ring: 214 84% 56%;
+
+    --radius: 1rem;
+
+    /* Custom civic flow colors */
+    --civic-blue: 214 84% 56%;
+    --civic-blue-deep: 214 84% 45%;
+    --civic-blue-light: 214 84% 70%;
+    
+    --teal-flow: 188 78% 41%;
+    --teal-flow-deep: 188 78% 35%;
+    --teal-flow-light: 188 78% 55%;
+    
+    --gold-prosperity: 43 89% 58%;
+    --gold-prosperity-deep: 43 89% 45%;
+    --gold-prosperity-light: 43 89% 70%;
+
+    /* Glassmorphism */
+    --glass-bg: 220 26% 8% / 0.6;
+    --glass-border: 220 26% 18% / 0.3;
+    
+    /* Flow gradients */
+    --gradient-civic: linear-gradient(135deg, hsl(var(--civic-blue)) 0%, hsl(var(--teal-flow)) 100%);
+    --gradient-prosperity: linear-gradient(135deg, hsl(var(--teal-flow)) 0%, hsl(var(--gold-prosperity)) 100%);
+    --gradient-river: linear-gradient(90deg, hsl(var(--civic-blue)) 0%, hsl(var(--teal-flow)) 50%, hsl(var(--gold-prosperity)) 100%);
+    
+    /* Shadows and glows */
+    --glow-civic: 0 0 20px hsl(var(--civic-blue) / 0.3);
+    --glow-teal: 0 0 20px hsl(var(--teal-flow) / 0.3);
+    --glow-gold: 0 0 20px hsl(var(--gold-prosperity) / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 26% 6% / 0.3);
+
+    /* Animation timing */
+    --flow-duration: 3s;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-flow: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode variant - not implemented, keeping dark cosmic theme */
+  .light {
+    /* Same as root for consistency */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Glassmorphism utilities */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-light {
+    background: hsl(220 26% 12% / 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(220 26% 18% / 0.2);
+  }
+
+  /* Flow animations */
+  @keyframes flow-pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  @keyframes river-flow {
+    0% { transform: translateX(0) translateY(0); opacity: 0.3; }
+    25% { opacity: 0.8; }
+    50% { transform: translateX(10px) translateY(-5px); opacity: 1; }
+    75% { opacity: 0.8; }
+    100% { transform: translateX(20px) translateY(0); opacity: 0.3; }
+  }
+
+  @keyframes particle-drift {
+    0% { transform: translateX(0) translateY(0) scale(0.8); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(100px) translateY(-20px) scale(1.2); opacity: 0; }
+  }
+
+  /* Custom flow effects */
+  .flow-glow {
+    filter: drop-shadow(var(--glow-civic));
+    transition: var(--transition-flow);
+  }
+
+  .flow-glow-teal {
+    filter: drop-shadow(var(--glow-teal));
+  }
+
+  .flow-glow-gold {
+    filter: drop-shadow(var(--glow-gold));
+  }
+
+  /* Typography enhancements */
+  .heading-flow {
+    background: var(--gradient-river);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer components {
+  /* Flow visualization styles */
+  .river-node {
+    @apply glass rounded-2xl p-4 transition-all duration-300;
+    background: var(--gradient-civic);
+    box-shadow: var(--glow-civic);
+  }
+
+  .river-node:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-civic), var(--shadow-glass);
+  }
+
+  .flow-stream {
+    stroke: url(#riverGradient);
+    stroke-width: 3;
+    fill: none;
+    filter: drop-shadow(0 0 8px hsl(var(--civic-blue) / 0.4));
+    animation: flow-pulse var(--flow-duration) ease-in-out infinite;
+  }
+
+  .particle {
+    animation: particle-drift 4s ease-in-out infinite;
+  }
+}
